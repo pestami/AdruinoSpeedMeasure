@@ -68,14 +68,8 @@ void setup()
 //========================================================================================
 void loop()
 {
-
-
     Button_Start = digitalRead(Button_7);
     Button_Stop = digitalRead(Button_1);
-
-
-
-
 
      // if  (interuptStopTime > interuptStartTime)
       if (FlagMeasurementStart==0 && FlagMeasurementStop==1)
@@ -87,12 +81,12 @@ void loop()
         lcd.print("Elapsed Time:");    
       
         lcd.setCursor(0, 1);         // move cursor to   (2, 1)  
-        lcd.print("_______________");     
+        lcd.print("           ");     
         lcd.setCursor(0, 1);         // move cursor to   (2, 1)  
         lcd.print(elapsedTime);   
 
-        lcd.setCursor(7, 1);         // move cursor to   (2, 1)  
-        lcd.print("ms");   
+       // lcd.setCursor(7, 1);         // move cursor to   (2, 1)  
+       // lcd.print("ms");   
 
                  // move cursor to   (2, 1)  
         speed=85*1000*10;   //*1000; // mm
@@ -101,9 +95,10 @@ void loop()
         //speed=123;
         sSpeed=String(speed);
         sSpeedUnformated=sSpeed;
-        sSpeed=sSpeed.substring(0,1)+"."+ sSpeed.substring(1,1);
+        sSpeed=sSpeed.substring(0,3)+"."+ sSpeed.substring(3,0);  //string substr (size_t pos, size_t len) const;
+        //sSpeed=sSpeedUnformated;
 
-        lcd.setCursor(10, 1);
+        lcd.setCursor(7, 1);
         lcd.print(sSpeed); 
         lcd.setCursor(13, 1);         // move cursor to   (2, 1) 
         lcd.print("m/s"); 
